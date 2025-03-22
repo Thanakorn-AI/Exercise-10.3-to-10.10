@@ -2,13 +2,12 @@
 const { View, StyleSheet, ScrollView } = require('react-native');
 const { Pressable } = require('react-native');
 const { Link } = require('react-router-native');
-const Constants = require('expo-constants');
+const { SafeAreaView } = require('react-native-safe-area-context');
 const Text = require('./Text');
 const theme = require('../theme');
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: theme.colors.appBarBackground,
     paddingBottom: 10,
   },
@@ -33,12 +32,12 @@ const AppBarTab = ({ to, children }) => (
 
 const AppBar = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
         <AppBarTab to="/">Repositories</AppBarTab>
         <AppBarTab to="/signin">Sign In</AppBarTab>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
