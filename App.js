@@ -7,10 +7,10 @@ const Main = require('./src/components/Main');
 const App = () => {
   return (
     <SafeAreaProvider>
+      <StatusBar style="light" />
       <NativeRouter>
         <Main />
       </NativeRouter>
-      <StatusBar style="light" />
     </SafeAreaProvider>
   );
 };

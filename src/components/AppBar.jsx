@@ -1,5 +1,5 @@
 // rate-repository-app/src/components/AppBar.jsx
-const { View, StyleSheet, ScrollView } = require('react-native');
+const { StyleSheet, ScrollView } = require('react-native');
 const { Pressable } = require('react-native');
 const { Link } = require('react-router-native');
 const { SafeAreaView } = require('react-native-safe-area-context');
@@ -36,6 +36,12 @@ const AppBar = () => {
       <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
         <AppBarTab to="/">Repositories</AppBarTab>
         <AppBarTab to="/signin">Sign In</AppBarTab>
+        <AppBarTab to="/test1">Test1</AppBarTab>
+        <AppBarTab to="/test2">Test2</AppBarTab>
+        <AppBarTab to="/test3">Test3</AppBarTab>
+        <AppBarTab to="/test1">Test1</AppBarTab>
+        <AppBarTab to="/test2">Test2</AppBarTab>
+        <AppBarTab to="/test3">Test3</AppBarTab>
       </ScrollView>
     </SafeAreaView>
   );
