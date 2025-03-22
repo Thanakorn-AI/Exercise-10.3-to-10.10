@@ -44,31 +44,42 @@ const SignInForm = ({ onSubmit }) => {
     onSubmit,
   });
 
+  // Helper to determine if errors should be shown
+  const showErrors = () => {
+    // Show errors only if the form has been submitted (isSubmitting)
+    // or if there are values in either field (indicating user intent)
+    return (
+      formik.isSubmitting ||
+      formik.values.username !== '' ||
+      formik.values.password !== ''
+    );
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={[
           styles.input,
-          formik.touched.username && formik.errors.username && styles.inputError,
+          showErrors() && formik.touched.username && formik.errors.username && styles.inputError,
         ]}
         placeholder="Username"
         value={formik.values.username}
         onChangeText={formik.handleChange('username')}
       />
-      {formik.touched.username && formik.errors.username && (
+      {showErrors() && formik.touched.username && formik.errors.username && (
         <Text style={styles.errorText}>{formik.errors.username}</Text>
       )}
       <TextInput
         style={[
           styles.input,
-          formik.touched.password && formik.errors.password && styles.inputError,
+          showErrors() && formik.touched.password && formik.errors.password && styles.inputError,
         ]}
         placeholder="Password"
         value={formik.values.password}
         onChangeText={formik.handleChange('password')}
         secureTextEntry
       />
-      {formik.touched.password && formik.errors.password && (
+      {showErrors() && formik.touched.password && formik.errors.password && (
         <Text style={styles.errorText}>{formik.errors.password}</Text>
       )}
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
